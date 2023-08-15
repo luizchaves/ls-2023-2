@@ -33,19 +33,19 @@ const operator = '-'; // +, -
 let result;
 
 // if (operator === '+') {
-//   console.log(x + y);
+//   console.log(value1 + value2);
 // } else if (operator === '-') {
-//   console.log(x - y);
+//   console.log(value1 - value2);
 // } else {
 //   console.log('Invalid operator');
 // }
 
 switch (operator) {
   case '+':
-    console.log(x + y);
+    console.log(value1 + value2);
     break;
   case '-':
-    console.log(x - y);
+    console.log(value1 - value2);
     break;
   default:
     console.log('Invalid operator');
@@ -102,5 +102,51 @@ console.log(result);
 // 10, 11, ..., 19
 // ...
 // 90, 91, ... 99
+let sequence = '';
+
+for (let flag = 0; flag <= 99; flag += 1) {
+  if (flag < 10) {
+    sequence += '0' + flag;
+  } else {
+    sequence += flag;
+  }
+  if (flag % 10 === 9) {
+    sequence += '\n';
+  } else {
+    sequence += ' ';
+  }
+}
+
+// console.log(sequence);
 
 // for for
+sequence = '';
+
+for (let decimal = 0; decimal <= 9; decimal++) {
+  for (let unit = 0; unit <= 9; unit++) {
+    sequence += decimal + String(unit) + (unit === 9 ? '\n' : ' ');
+  }
+}
+
+// console.log(sequence);
+
+// 90, 91, ... 99
+// ...
+// 10, 11, ..., 19
+// 00, 01, ..., 09
+sequence = '';
+
+for (let flag = 99; flag >= 0; flag -= 1) {
+  if (flag < 10) {
+    sequence += '0' + flag;
+  } else {
+    sequence += flag;
+  }
+  if (flag % 10 === 0) {
+    sequence += '\n';
+  } else {
+    sequence += ' ';
+  }
+}
+
+console.log(sequence);
