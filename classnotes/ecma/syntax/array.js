@@ -86,3 +86,6 @@ for (const [index, number] of numbers.entries()) {
 // Mutator: push(), unshift(), pop(), shift(), reverse(), sort(), splice()
 // Accessor: includes(), join(), slice()
 // Iteration: map(), filter(), reduce(), every(), some()
+const sum = [1, 2, 3].map((x) => 2 * x);
+
+console.log(sum);
