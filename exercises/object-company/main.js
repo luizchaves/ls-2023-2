@@ -8,4 +8,8 @@ companies.add(
   new Company('Alphabet Inc.', 2015, ['Search', 'Cloud', 'Advertising'])
 );
 
-console.log(companies.list());
+companies.list().forEach((company) => (company.kind = 'Internet company'));
+
+console.table(companies.list());
+
+console.log(companies.toString());
