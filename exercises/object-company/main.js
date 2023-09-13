@@ -13,3 +13,5 @@ companies.list().forEach((company) => (company.kind = 'Internet company'));
 console.table(companies.list());
 
 console.log(companies.toString());
+
+console.table(companies.foundedAfter(2000));
