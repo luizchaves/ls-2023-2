@@ -18,15 +18,15 @@ function storageSelect(key, isJSON = true) {
   return value;
 }
 
-function load(resourse, data) {
+function load(resource, data) {
   if (storageSelect('loaded', false) !== 'ok') {
-    storageInsert(resourse, data);
+    storageInsert(resource, data);
 
     storageInsert('loaded', 'ok');
   }
 }
 
-function create(resourse, value) {
+function create(resource, value) {
   const values = storageSelect(resource);
 
   value = { ...value, id: uuidv4() };
@@ -36,8 +36,8 @@ function create(resourse, value) {
   return value;
 }
 
-function read(resourse, id) {
-  const values = storageSelect(resourse);
+function read(resource, id) {
+  const values = storageSelect(resource);
 
   if (id) {
     return values.find((value) => value.id === id);
@@ -46,8 +46,8 @@ function read(resourse, id) {
   }
 }
 
-function update(resourse, id, value) {
-  const values = storageSelect(resourse);
+function update(resource, id, value) {
+  const values = storageSelect(resource);
 
   const index = values.findIndex((value) => value.id === id);
 
@@ -56,7 +56,7 @@ function update(resourse, id, value) {
 
     values[index] = { ...values[index], ...value };
 
-    storageInsert(resourse, values);
+    storageInsert(resource, values);
 
     return value;
   } else {
@@ -64,8 +64,8 @@ function update(resourse, id, value) {
   }
 }
 
-function remove(resourse, id) {
-  const values = storageSelect(resourse);
+function remove(resource, id) {
+  const values = storageSelect(resource);
 
   const index = values.findIndex((value) => value.id === id);
 
@@ -73,7 +73,7 @@ function remove(resourse, id) {
     values.splice(index, 1);
   }
 
-  storageInsert(resourse, values);
+  storageInsert(resource, values);
 }
 
 export default { load, create, read, update, remove };
