@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script type="module">
+      const cep = '01001000';
+      const url = `https://viacep.com.br/ws/${cep}/json/`;
+
+      // fetch(url)
+      //   .then((response) => response.json())
+      //   .then((addressInfo) => console.log(addressInfo));
+
+      const response = await fetch(url);
+      const addressInfo = await response.json();
+      console.log(addressInfo);
+      console.log(addressInfo.logradouro);
+    </script>
+  </body>
+</html>
