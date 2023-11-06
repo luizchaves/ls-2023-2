@@ -1,0 +1,23 @@
+@host = {{$dotenv SUPABASE_URL}}
+@token = {{$dotenv SUPABASE_KEY}}
+
+### Create a investment
+# @name createInvestment
+POST {{host}}/rest/v1/investments
+apikey: {{token}}
+Authorization: Bearer {{token}}
+Content-Type: application/json
+Prefer: return=representation
+
+{
+  "name": "Tesouro IPCA 2029",
+  "value": 10000,
+  "origin": "Tesouro Direto",
+  "category": "IPCA",
+  "interest": "IPCA + 6%"
+}
+
+### Read investments
+GET {{host}}/rest/v1/investments?select=*
+apikey: {{token}}
+Authorization: Bearer {{token}}
