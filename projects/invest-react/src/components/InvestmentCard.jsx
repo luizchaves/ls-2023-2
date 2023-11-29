@@ -7,6 +7,7 @@ export default function InvestmentCard({
   interest,
   value,
   created_at,
+  isShowValues,
 }) {
   return (
     <div className="bg-white shadow-md rounded-lg p-4 relative">
@@ -15,7 +16,7 @@ export default function InvestmentCard({
           {name}
         </h3>
         <p className="investment-value text-lg font-semibold text-gray-700">
-          {formatCurrency(value / 100)}
+          {isShowValues ? formatCurrency(value / 100) : 'R$ ****'}
         </p>
       </div>
       <div className="mt-4">
