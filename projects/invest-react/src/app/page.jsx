@@ -4,7 +4,7 @@ import InvestmentCard from '@/components/InvestmentCard';
 import { investments } from '@/data/seed';
 import Storage from '@/services/supabase';
 import { IconEye, IconEyeOff } from '@tabler/icons-react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 async function getData() {
   return Storage.read('investments');
@@ -12,12 +12,26 @@ async function getData() {
 
 export default function Home() {
   const [isShowValues, setIsShowValues] = useState(true);
-
-  // const investments = await getData();
+  const [investments, setInvestments] = useState([]);
 
   const toggleShowValues = () => {
     setIsShowValues(!isShowValues);
   };
+
+  const loadInvestment = async () => {
+    const data = await getData();
+
+    setInvestments(data);
+  };
+
+  useEffect(() => {
+    // getData().then((data) => setInvestments(data));
+    loadInvestment();
+  }, []);
+
+  // useEffect(() => {
+  //   Storage.create('investments', investments);
+  // }, [investments]);
 
   return (
     <>
