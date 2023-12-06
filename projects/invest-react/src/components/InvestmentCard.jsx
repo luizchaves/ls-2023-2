@@ -1,14 +1,24 @@
+import { useInvestment } from '@/contexts/InvestmentContext';
 import { formatCurrency, formatDate } from '@/lib/format';
+import { IconTrash } from '@tabler/icons-react';
 
 export default function InvestmentCard({
+  id,
   name,
   origin,
   category,
   interest,
   value,
   created_at,
-  isShowValues,
 }) {
+  const { removeInvestment, isShowValues } = useInvestment();
+
+  const handleDeleteInvestment = (id) => {
+    if (confirm(`Deseja remover ${name}?`)) {
+      removeInvestment(id);
+    }
+  };
+
   return (
     <div className="bg-white shadow-md rounded-lg p-4 relative">
       <div className="flex justify-between items-center">
@@ -38,6 +48,13 @@ export default function InvestmentCard({
             {formatDate(created_at)}
           </span>
         </p>
+      </div>
+      <div className="absolute bottom-4 right-4 inline-flex">
+        <IconTrash
+          size={20}
+          className="text-gray-400 hover:text-gray-500 cursor-pointer"
+          onClick={() => handleDeleteInvestment(id)}
+        />
       </div>
     </div>
   );
